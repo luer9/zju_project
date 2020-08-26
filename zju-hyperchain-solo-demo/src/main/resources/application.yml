@@ -1,0 +1,21 @@
+
+#spring.thymeleaf.cache=false
+spring:
+  thymeleaf:
+    cache: false
+  # MySQL数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/user?characterEncoding=utf-8&useUnicode=true&useSSL=false
+    username: root
+    password: Aa111111
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    # 修改数据库引擎为InnoDB
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate:
+        format_sql: true
+

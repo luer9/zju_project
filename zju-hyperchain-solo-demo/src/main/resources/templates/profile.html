@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>基于区块链平台的合同存证系统</title>
+		<!-- Bootstrap Core CSS -->
+		<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<!-- MetisMenu CSS -->
+		<link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+		<!-- Custom CSS -->
+		<link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+		<!-- Custom Fonts -->
+		<link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="nav" th:insert="index.html::navbar"></div>
+			<!-- 页面内容区 -->
+			<div id="page-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12">
+							<h3 class="page-header">信息页面</h3>
+						</div>
+						<!-- /.col-lg-12 -->
+					</div>
+					<!-- /.row -->
+					<div class="row">
+						<div class="col-lg-6">
+
+							<div class="panel panel-default" >
+								<div class="panel-heading">
+									<i class="fa fa-user"></i> 客户信息
+								</div>
+								<!-- /.panel-heading -->
+
+								<div class="panel-body" th:if="${#strings.isEmpty(person)}">
+									<h2 style="color: blue" class="text-center">请认证</h2>
+								</div>
+
+								<div class="panel-body" th:if="${not #strings.isEmpty(person)}">
+									<div class="list-group" >
+
+										<a href="#" class="list-group-item">
+											<i class="fa fa-thumb-tack fa-fw"></i> 姓名 ：
+											<span class=" text-muted ">[[${person.name}]]
+                                  </span>
+										</a>
+										<a href="#" class="list-group-item">
+											<i class="fa fa-envelope fa-fw"></i> 身份证号 ：
+											<span class="text-success">[[${person.idCard}]]
+                                    </span>
+										</a>
+
+										<a href="#" class="list-group-item">
+											<i class="fa fa-upload fa-fw"></i> 状态 ：
+											<span class="text-danger" id="validify"> 已认证
+                                    </span>
+										</a>
+
+									</div>
+
+								</div>
+								<!-- /.panel-body -->
+							</div>
+						</div>
+
+						<div class="col-lg-6">
+
+							<div class="panel panel-default" >
+								<div class="panel-heading">
+									<i class="fa fa-user"></i> 企业信息
+								</div>
+								<!-- /.panel-heading -->
+								<div class="panel-body" th:if="${#strings.isEmpty(enterprise)}">
+									<h2 style="color: blue" class="text-center">请认证</h2>
+								</div>
+								<div class="panel-body" th:if="${not #strings.isEmpty(enterprise)}">
+									<div class="list-group" >
+										<a href="#" class="list-group-item">
+											<i class="fa fa-fire fa-fw "></i>  注册号 ：
+											<span class=" text-justify">[[${enterprise.regisNumber}]]
+                                    </span>
+										</a>
+										<a href="#" class="list-group-item">
+											<i class="fa fa-thumb-tack fa-fw"></i> 企业名称 ：
+											<span class=" text-muted ">[[${enterprise.enterpriseName}]]
+                                  </span>
+										</a>
+										<a href="#" class="list-group-item">
+											<i class="fa fa-envelope fa-fw"></i> 单位所在地 ：
+											<span class="text-success">[[${enterprise.location}]]
+                                    </span>
+										</a>
+
+										<a href="#" class="list-group-item">
+											<i class="fa fa-envelope fa-fw"></i> 经营范围 ：
+											<span class="text-success">[[${enterprise.businessScope}]]
+                                    </span>
+										</a>
+
+										<a href="#" class="list-group-item">
+											<i class="fa fa-envelope fa-fw"></i> 营业期限 ：
+											<span class="text-success">[[${enterprise.date}]]
+                                    </span>
+										</a>
+
+										<a href="#" class="list-group-item">
+											<i class="fa fa-envelope fa-fw"></i> 组织机构代码 ：
+											<span class="text-success">[[${enterprise.organizationCode}]]
+                                    </span>
+										</a>
+
+										<a href="#" class="list-group-item">
+											<i class="fa fa-upload fa-fw"></i> 状态 ：
+											<span class="text-danger" id="validify"> 已认证
+                                    </span>
+										</a>
+
+									</div>
+									<!-- /.list-group -->
+								
+								</div>
+								<!-- /.panel-body -->
+							</div>
+						</div>
+						<!-- /.col-lg-12 -->
+					</div>
+
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- 内容区结束 -->
+
+		</div>
+		<!-- /#wrapper -->
+
+		<!--sign Modal -->
+		<div class="modal fade" id="PwdModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">修改密码</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>请输入原密码</label>
+							<input class="form-control" type="password">
+						</div>
+						<div class="form-group">
+							<label>请输入新密码</label>
+							<input class="form-control" type="password">
+						</div>
+						<div class="form-group">
+							<label>请再次输入新密码</label>
+							<input class="form-control" type="password">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary">确认</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+
+		<!--validity Modal -->
+		<div class="modal fade" id="ValidifyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">认证</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>请输入证件号码</label>
+							<input class="form-control" type="password">
+						</div>
+						<div class="form-group">
+							<label>请输入姓名</label>
+							<input class="form-control" type="password">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary">确认</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+
+
+		<!-- jQuery -->
+		<script src="../vendor/jquery/jquery.min.js"></script>
+
+		<!-- Bootstrap Core JavaScript -->
+		<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+		<!-- Metis Menu Plugin JavaScript -->
+		<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+		<!-- Custom Theme JavaScript -->
+		<script src="../dist/js/sb-admin-2.js"></script>
+
+		<script>
+			function btn_updatePwd(id) {
+				$("#PwdModal").modal();
+			}
+			
+			$("#validify").on("click",function(){
+				var infor = $("#validify").text();
+//				alert(infor == "已认证");
+				
+//				if( infor == "已认证"){
+					alert("已认证，无需再认证！");
+//				}else {
+//					$("#ValidifyModal").modal();
+//				}
+				//如果已经认证就直接弹出来 提示
+				//否则调出modal框  即把255行反注释
+			});
+		</script>
+
+	</body>
+
+</html>

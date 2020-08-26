@@ -1,0 +1,124 @@
+[
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_personId",
+				"type": "string"
+			}
+		],
+		"name": "selectPerson",
+		"outputs": [
+			{
+				"name": "personAddress",
+				"type": "address"
+			},
+			{
+				"name": "personId",
+				"type": "string"
+			},
+			{
+				"name": "personName",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_organizationCode",
+				"type": "string"
+			}
+		],
+		"name": "selectOrganization",
+		"outputs": [
+			{
+				"name": "organizationAddress",
+				"type": "address"
+			},
+			{
+				"name": "organizationCode",
+				"type": "string"
+			},
+			{
+				"name": "organizationName",
+				"type": "string"
+			},
+			{
+				"name": "regisNumber",
+				"type": "string"
+			},
+			{
+				"name": "location",
+				"type": "string"
+			},
+			{
+				"name": "businessScope",
+				"type": "string"
+			},
+			{
+				"name": "date",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_personId",
+				"type": "string"
+			},
+			{
+				"name": "_personName",
+				"type": "string"
+			}
+		],
+		"name": "newPerson",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_organizationCode",
+				"type": "string"
+			},
+			{
+				"name": "_organizationName",
+				"type": "string"
+			},
+			{
+				"name": "_regisNumber",
+				"type": "string"
+			},
+			{
+				"name": "_location",
+				"type": "string"
+			},
+			{
+				"name": "_businessScope",
+				"type": "string"
+			},
+			{
+				"name": "_date",
+				"type": "string"
+			}
+		],
+		"name": "newOrganization",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]

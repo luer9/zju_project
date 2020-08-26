@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>基于区块链平台的合同存证系统</title>
+
+		<!-- Bootstrap Core CSS -->
+		<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- MetisMenu CSS -->
+		<link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+		<!-- Custom CSS -->
+		<link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+		<!-- Custom Fonts -->
+		<link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+		<style>
+			.panel.panel-default {
+				margin-bottom: 15px;
+			}
+			.panel-footer{
+				background-color: transparent;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="wrapper">
+		<div th:insert="index::navbar"></div>
+
+			<!-- 页面内容区 -->
+			<div id="page-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12">
+							<h3 class="page-header">模板选择</h3>
+						</div>
+						<!-- /.col-lg-12 -->
+					</div>
+					<!-- /.row -->
+					<div class="row">
+						<div class="col-lg-8">
+							<!-- .panel-heading -->
+							<div class="panel-body">
+								<div class="panel-group" id="accordion">
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">商家经营</a>
+                                        </h4>
+										</div>
+										<div id="collapseOne" class="panel-collapse collapse in">
+											<div class="panel-body">
+												<div class="form-group">
+													<label class="radio-inline col-lg-3">
+                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>商务合作协议
+                                            		</label>
+													<label class="radio-inline col-lg-3s">
+                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">商品代销协议
+                                            		</label>
+													<label class="radio-inline col-lg-3">
+                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">房屋装修协议
+                                            		</label>
+                                            		
+                                            		<label class="radio-inline col-lg-3">
+                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline4" value="option4">合同作废协议
+                                            		</label>
+												</div>
+											</div>
+											<div class="panel-footer text-right">
+												<button class="btn btn-outline btn-default" onclick="createContract(id)">创建合同</button>
+											</div>
+										</div>
+									</div>
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">生活交易</a>
+                                        </h4>
+										</div>
+										<div id="collapseTwo" class="panel-collapse collapse">
+											<div class="panel-body">
+												<div class="form-group">
+													<label class="radio-inline col-lg-3">
+                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>转让协议
+                                            		</label>
+													<label class="radio-inline col-lg-3s">
+                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">买卖合同
+                                            		</label>
+													<label class="radio-inline col-lg-3">
+                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">收据
+                                            		</label>
+                                             
+												</div>
+											</div>
+											<div class="panel-footer text-right">
+												<button class="btn btn-outline btn-default" onclick="createContract(id)">创建合同</button>
+											</div>
+										</div>
+									</div>
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">生活租赁</a>
+                                        </h4>
+										</div>
+										<div id="collapseThree" class="panel-collapse collapse">
+											<div class="panel-body">
+												<div class="form-group">
+													<label class="radio-inline col-lg-3">
+                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>车位租赁合同
+                                            		</label>
+													<label class="radio-inline col-lg-3s">
+                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">店铺转让协议
+                                            		</label>
+													<label class="radio-inline col-lg-3">
+                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">房屋租赁合同
+                                            		</label>
+                                          
+												</div>
+											</div>
+											<div class="panel-footer text-right">
+												<button class="btn btn-outline btn-default" onclick="createContract(id)">创建合同</button>
+											</div>
+										</div>
+									</div>
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">劳动关系</a>
+                                        </h4>
+										</div>
+										<div id="collapseFour" class="panel-collapse collapse">
+											<div class="panel-body">
+												<div class="form-group">
+													<label class="radio-inline col-lg-3">
+                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked> 家教聘请协议
+                                            		</label>
+													<label class="radio-inline col-lg-3s">
+                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">兼职协议
+                                            		</label>
+										 
+                                          
+												</div>
+											</div>
+											<div class="panel-footer text-right">
+												<button class="btn btn-outline btn-default" onclick="createContract(id)">创建合同</button>
+											</div>
+										</div>
+									</div>
+
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">其他</a>
+                                        </h4>
+										</div>
+										<div id="collapseFive" class="panel-collapse collapse">
+											<div class="panel-body">
+												<div class="form-group">
+												 
+												</div>
+											</div>
+											<div class="panel-footer text-right">
+												<button class="btn btn-outline btn-default" onclick="createContract(id)">创建合同</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- .panel-body -->
+						</div>
+						<!-- /.col-lg-12 -->
+					</div>
+					<!-- /.row -->
+
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- 内容区结束 -->
+
+		</div>
+		<!-- /#wrapper -->
+
+		<!-- jQuery -->
+		<script src="../vendor/jquery/jquery.min.js"></script>
+
+		<!-- Bootstrap Core JavaScript -->
+		<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+		<!-- Metis Menu Plugin JavaScript -->
+		<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+		<!-- Custom Theme JavaScript -->
+		<script src="../dist/js/sb-admin-2.js"></script>
+		<script th:inline="javascript">
+			function createContract(id){
+				var loginhref= [[@{/createContract}]];
+				window.location.href = loginhref;
+			//	window.location.href = "createContract.html" + "?id="+id;  //把选择的模板id传过去
+			}
+		</script>
+	</body>
+
+</html>

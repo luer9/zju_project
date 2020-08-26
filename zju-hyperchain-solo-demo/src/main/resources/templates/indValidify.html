@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>基于区块链平台的合同存证系统</title>
+
+		<!-- Bootstrap Core CSS -->
+		<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- MetisMenu CSS -->
+		<link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+		<!-- Custom CSS -->
+		<link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+		<!-- Custom Fonts -->
+		<link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+		<style>
+			.btn.btn-default {
+				margin-left: 45%;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="wrapper">
+
+			<!-- 导航 上 -->
+			<div th:insert="index::navbar"></div>
+			<!-- 页面内容区 -->
+			<div id="page-wrapper">
+				<div class="container-fluid">
+					<div class="row" th:if="${not #strings.isEmpty(msg)}">
+						<div class="col-lg-12">
+							<h3 class="page-header" style="color: green">已认证</h3>
+						</div>
+					</div>
+					<div class="row" th:if="${#strings.isEmpty(msg)}">
+						<div class="col-lg-12">
+							<h3 class="page-header">个人认证</h3>
+						</div>
+						<!-- /.col-lg-12 -->
+					</div>
+					<!-- /.row -->
+					<div class="col-lg-5" th:if="${#strings.isEmpty(msg)}">
+						<div class="row">
+							<form role="form" action="/" th:action="@{/personCertification}" th:method="post">
+								<div class="form-group">
+									<label>真实姓名</label>
+									<input class="form-control" name="name" type="text" >
+								</div>
+
+								<div class="form-group">
+									<div class="form-group">
+										<label>证件类型&nbsp;</label>
+										<label class="radio-inline">
+											<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>二代身份证
+										</label>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label>证件号码</label>
+									<input class="form-control" name="idCard" type="text">
+								</div>
+								<button type="submit" class="btn btn-default">确定</button>
+							</form>
+
+						</div>
+
+					</div>
+
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- 内容区结束 -->
+
+		</div>
+		<!-- /#wrapper -->
+
+		 
+		<!-- jQuery -->
+		<script src="../vendor/jquery/jquery.min.js"></script>
+
+		<!-- Bootstrap Core JavaScript -->
+		<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+		<!-- Metis Menu Plugin JavaScript -->
+		<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+		<!-- Custom Theme JavaScript -->
+		<script src="../dist/js/sb-admin-2.js"></script>
+
+		<script th:inline="javascript">
+			var t = [[${error}]];
+			if(t != null) alert(t);
+		</script>
+		<script>
+			$("button[type='submit']").on("click", function() {
+
+				if(isEmpty() == false) {
+					alert("所填信息不能为空！");
+					return;
+				}
+			});
+
+			//判断输入框不能为空
+			function isEmpty(){
+				var flag = true;
+				$("input[type='text']").each(function(i, item){
+					if(item.value == ""){
+						flag = false;
+					}
+				});
+				return flag;
+			}
+		</script>
+	</body>
+
+</html>
